@@ -1,19 +1,27 @@
 package main
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
-func TestBits_sum4294967295(t *testing.T) {
-	result := SumInts(Bits())
-
-	if result != 4294967295 {
-		t.Errorf("Incorrect solution, got: %d, want: %d", result, 4294967295)
+func TestAsBinary(t *testing.T) {
+	testCases := []struct {
+		input int
+		want  string
+	}{
+		{9, "1001"},
+		{32, "100000"},
+		{18, "10010"},
 	}
-}
 
-func TestAsBinary_9is1001(t *testing.T) {
-	result := AsBinary(9)
+	for _, testCase := range testCases {
+		t.Run(fmt.Sprintf("%d = %s", testCase.input, testCase.want), func(t *testing.T) {
+			got := AsBinary(testCase.input)
 
-	if result != "1001" {
-		t.Errorf("AsBinary(9) incorrect, got: %s, want: %s", result, "1001")
+			if testCase.want != got {
+				t.Errorf("want %s, got %s", testCase.want, got)
+			}
+		})
 	}
 }

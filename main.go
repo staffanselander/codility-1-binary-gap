@@ -4,26 +4,7 @@ import (
 	"fmt"
 	"os"
 	"strconv"
-	"strings"
 )
-
-func Solution(N int) (total int) {
-	current := 0
-
-	for _, value := range strings.Split(AsBinary(N), "") {
-		if value == "0" {
-			current += 1
-		} else {
-			if current > total {
-				total = current
-			}
-
-			current = 0
-		}
-	}
-
-	return
-}
 
 func main() {
 	args := os.Args[1:]
@@ -41,3 +22,4 @@ func main() {
 
 	fmt.Printf("Number of sequential zeros: %d\n", Solution(num))
 }
+
